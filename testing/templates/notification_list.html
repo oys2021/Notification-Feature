@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notification Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .read-btn {
+      padding: 8px 16px;
+      background-color: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    .read-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+<body>
+
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Notification</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for notification in notifications %}
+    <tr>
+      <td>{{ notification.created_at }}</td>
+      <td>{{ notification.message }}</td>
+      <td>
+        {% if not notification.is_read %}
+          <form method="post" action="{% url 'mark_notification_as_read' %}">
+              {% csrf_token %}
+              <input type="hidden" name="notification_id" value="{{ notification.id }}">
+              <button class="read-btn" type="submit">Mark as Read</button>
+          </form>
+        {% endif %}
+      </td>
+    </tr>
+    <!-- Add more rows as needed -->
+    {% endfor %}
+  </tbody>
+</table>
+
+</body>
+</html>

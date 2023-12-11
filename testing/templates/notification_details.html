@@ -1,0 +1,38 @@
+<!-- notification_details.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        .read-status {
+            font-weight: bold;
+            color: {% if notification.is_read %}#28a745{% else %}#dc3545{% endif %};
+        }
+
+        /* Add more styles as needed */
+    </style>
+</head>
+<body>
+    <h1>Notification Details</h1>
+    <p>Date Notification Sent: {{ notification.created_at }}</p>
+    <p>Message: {{ notification.message }}</p>
+    <p>Status: <span class="read-status">{% if notification.is_read %}Read{% else %}Unread{% endif %}</span></p>
+    <!-- Add more details as needed -->
+</body>
+</html>

@@ -1,0 +1,187 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Website</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Include Font Awesome CSS -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            display: flex;
+        }
+
+        nav li {
+            margin-right: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            position: relative;
+        }
+
+        .notification-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: #f00;
+            color: #fff;
+            padding: 5px;
+            border-radius: 50%;
+        }
+
+        .icon-badge-container {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .icon-badge-icon {
+            font-size: 30px;
+            position: relative;
+        }
+
+        .icon-badge {
+            background-color: red;
+            font-size: 12px;
+            color: white;
+            text-align: center;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            position: absolute;
+            top: -10px;
+            left: 18px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <!-- Add other navbar items as needed -->
+        </ul>
+
+        <li>
+            <a href="{% url 'notifications' %}">
+                <div class="icon-badge-container">
+                    <i class="far fa-envelope-open icon-badge-icon"></i>
+                    {% if unread_notifications %}
+                        <div class="icon-badge">{{ unread_notifications }}</div>
+                    {% endif %}
+                </div>
+            </a>
+        </li>
+    </nav>
+
+    <!-- Your homepage content goes here -->
+
+</body>
+</html> {% endcomment %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage with Navbar</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-...your-sha-hash..." crossorigin="anonymous" />
+  <style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+      
+      header {
+        background-color: #333;
+        color: #fff;
+        padding: 10px;
+      }
+      
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      
+      .logo {
+        font-size: 1.5rem;
+      }
+      
+      ul {
+        list-style: none;
+        display: flex;
+      }
+      
+      li {
+        margin: 0 15px;
+      }
+      
+      a {
+        text-decoration: none;
+        color: #fff;
+      }
+      
+      .notification {
+        position: relative;
+      }
+      
+      .badge {
+        background-color: red;
+        color: #fff;
+        border-radius: 50%;
+        padding: 3px 8px;
+        position: absolute;
+        top: -5px;
+        right: -5px;
+      }
+      
+      /* Font Awesome Icons */
+      .fas {
+        font-size: 1.2rem;
+      }
+      
+</style>
+</head>
+<body>
+
+    <header>
+        <nav>
+          <div class="logo">Your Logo</div>
+          <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <button>{{request.user}}</button>
+          </ul>
+          <div class="notification">
+            {% if unread_notifications %}
+            <span class="badge"><a href="{% url 'notifications' %}">{{ unread_notifications }}</a></span>
+            {% endif %}
+            <i class="fas fa-bell" style="font-size: 35px;"></i>
+          </div>
+        </nav>
+      </header>
+      
+
+<!-- Your homepage content goes here -->
+
+<script src="https://kit.fontawesome.com/your-fontawesome-kit-id.js" crossorigin="anonymous"></script>
+</body>
+</html>
